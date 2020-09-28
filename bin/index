@@ -3,3 +3,6 @@
 _FUNCTION="cindex ."
 
 . _LIBRARY_PATH/_APPLICATION_NAME/include.sh
+
+. _LIBRARY_PATH/_APPLICATION_NAME/index.files.sh
+. _LIBRARY_PATH/_APPLICATION_NAME/index.log.sh

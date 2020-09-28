@@ -12,7 +12,7 @@ then
     _PROJECT=$(basename $(pwd))
 fi
 
-CSEARCHINDEX=~/.csearch/$_PROJECT/$_BRANCH
+CSEARCHINDEX=~/.csearch/$_PROJECT/${_BRANCH}${_QUALIFIER}
 mkdir -p $(dirname $CSEARCHINDEX)
 
 export CSEARCHINDEX

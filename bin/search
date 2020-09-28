@@ -1,40 +1,25 @@
 #!/bin/sh
 
 . _LIBRARY_PATH/git-helpers/include.sh
-
-for _ARG in $@
-do
-    case $_ARG in
-        -a)
-            _ALL=1
-            shift
-            ;;
-        -b=*)
-            _BRANCH="${_ARG#*=}"
-            shift
-            ;;
-        -p=*)
-            _PROJECT="${_ARG#*=}"
-            shift
-            ;;
-        -l)
-            _LIST_FILES=1
-            shift
-            ;;
-        *)
-            _SEARCH_ARGS="$_ARG"
-            ;;
-    esac
-done
+. _LIBRARY_PATH/_APPLICATION_NAME/search.cli.sh
+. _LIBRARY_PATH/_APPLICATION_NAME/search.contents.sh
+. _LIBRARY_PATH/_APPLICATION_NAME/search.files.sh
+. _LIBRARY_PATH/_APPLICATION_NAME/search.log.sh
 
 _do_search() {
-    if [ -n "$_LIST_FILES" ]
+    if [ -z "$_SEARCH_FILENAMES_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
     then
-        . _LIBRARY_PATH/_APPLICATION_NAME/include.sh\
-            | sed -e "s/\:.*$//"\
-            | sort -u
-    else
-        . _LIBRARY_PATH/_APPLICATION_NAME/include.sh
+        _search_contents
+    fi
+
+    if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
+    then
+        _search_filename
+    fi
+
+    if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_FILENAMES_ONLY" ]
+    then
+        _search_log
     fi
 }
 
@@ -55,7 +40,7 @@ if [ -n "$_ALL" ]
 then
     for _PROJECT in $(ls ~/.csearch)
     do
-        for _BRANCH in $(ls ~/.csearch/$_PROJECT)
+        for _BRANCH in $(ls ~/.csearch/$_PROJECT | grep -v \\.files$)
         do
             _search
         done
