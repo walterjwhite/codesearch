@@ -2,6 +2,6 @@
 
 _search_log() {
     _QUALIFIER=.log
-    . _LIBRARY_PATH/_APPLICATION_NAME/include.sh
+    . _LIBRARY_PATH_/_APPLICATION_NAME_/include.sh
     unset _QUALIFIER
 }

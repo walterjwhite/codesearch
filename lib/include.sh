@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#_DEBUG=0
+. _LIBRARY_PATH_/install/logging.sh
 
 if [ -z "$_BRANCH" ]
 then
@@ -12,16 +12,9 @@ then
     _PROJECT=$(basename $(pwd))
 fi
 
-CSEARCHINDEX=~/.csearch/$_PROJECT/${_BRANCH}${_QUALIFIER}
+CSEARCHINDEX=_APPLICATION_DATA_PATH_/$_PROJECT/${_BRANCH}${_QUALIFIER}
 mkdir -p $(dirname $CSEARCHINDEX)
 
 export CSEARCHINDEX
-
-if [ -n "$_DEBUG" ]
-then
-    echo $CSEARCHINDEX
-    echo $_FUNCTION
-    set -x
-fi
 
 CSEARCHINDEX="$CSEARCHINDEX" $_FUNCTION 2>/dev/null

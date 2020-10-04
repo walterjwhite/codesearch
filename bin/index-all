@@ -1,6 +1,7 @@
 #!/bin/sh
 
-. _LIBRARY_PATH/git-helpers/include.sh
+. _LIBRARY_PATH_/git/include.sh
+. _LIBRARY_PATH_/install/logging.sh
 
 cd $_PROJECT_BASE_PATH
 
@@ -17,8 +18,7 @@ do
 
         if [ "$?" -gt "0" ]
         then
-            echo "Unable to checkout branch due to error"
-            exit 1
+            exitWithError "Unable to checkout branch due to error" 1
         fi
 
         index

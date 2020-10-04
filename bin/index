@@ -2,7 +2,7 @@
 
 _FUNCTION="cindex ."
 
-. _LIBRARY_PATH/_APPLICATION_NAME/include.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/include.sh
 
-. _LIBRARY_PATH/_APPLICATION_NAME/index.files.sh
-. _LIBRARY_PATH/_APPLICATION_NAME/index.log.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/index.files.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/index.log.sh

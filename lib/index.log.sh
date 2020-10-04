@@ -12,4 +12,4 @@ git log --pretty=format:"%h,%an,%ad,%s"> .csearch/log
 
 _FUNCTION="cindex .csearch/log"
 _QUALIFIER=.log
-. _LIBRARY_PATH/_APPLICATION_NAME/include.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/include.sh

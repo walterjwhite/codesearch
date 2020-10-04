@@ -1,10 +1,10 @@
 #!/bin/sh
 
-. _LIBRARY_PATH/git-helpers/include.sh
-. _LIBRARY_PATH/_APPLICATION_NAME/search.cli.sh
-. _LIBRARY_PATH/_APPLICATION_NAME/search.contents.sh
-. _LIBRARY_PATH/_APPLICATION_NAME/search.files.sh
-. _LIBRARY_PATH/_APPLICATION_NAME/search.log.sh
+. _LIBRARY_PATH_/git/include.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search.cli.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search.contents.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search.files.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search.log.sh
 
 _do_search() {
     if [ -z "$_SEARCH_FILENAMES_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
