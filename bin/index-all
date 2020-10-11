@@ -5,7 +5,7 @@
 
 cd $_PROJECT_BASE_PATH
 
-for _PROJECT in $(ls)
+for _PROJECT in $(find . -type d | grep \\.git$ | sed -e "s/\/\.git$//")
 do
     cd $_PROJECT
 

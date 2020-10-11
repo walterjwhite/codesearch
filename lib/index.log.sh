@@ -1,15 +1,8 @@
 #!/bin/sh
 
-_HAS=$(grep .csearch .gitignore 2>/dev/null | wc -l)
-if [ "$_HAS" -eq "0" ]
-then
-    echo .csearch >> .gitignore
-fi
+. _LIBRARY_PATH_/_APPLICATION_NAME_/index.gitignore.sh
 
-mkdir -p .csearch
+git log --pretty=format:"%h,%an,%ad,%s" > .csearch/log
 
-git log --pretty=format:"%h,%an,%ad,%s"> .csearch/log
-
-_FUNCTION="cindex .csearch/log"
-_QUALIFIER=.log
-. _LIBRARY_PATH_/_APPLICATION_NAME_/include.sh
+_QUALIFIER=log
+. _LIBRARY_PATH_/_APPLICATION_NAME_/index.special.sh

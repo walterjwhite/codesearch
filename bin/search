@@ -24,7 +24,7 @@ _do_search() {
 }
 
 _search() {
-    cd $_PROJECT_BASE_PATH/$_PROJECT
+    cd $_PROJECT_BASE_PATH/$_PROJECT_PATH
 
     _ORIGINAL_BRANCH=$(gcb)
     gco $_BRANCH

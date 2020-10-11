@@ -12,6 +12,11 @@ then
     _PROJECT=$(basename $(pwd))
 fi
 
+if [ -n "$_QUALIFIER" ]
+then
+    _QUALIFIER=".$_QUALIFIER"
+fi
+
 CSEARCHINDEX=_APPLICATION_DATA_PATH_/$_PROJECT/${_BRANCH}${_QUALIFIER}
 mkdir -p $(dirname $CSEARCHINDEX)
 
