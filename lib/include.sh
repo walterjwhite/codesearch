@@ -7,19 +7,10 @@ then
     _BRANCH=$(gcb)
 fi
 
-if [ -z "$_PROJECT" ]
-then
-    _PROJECT=$(basename $(pwd))
-fi
-
-if [ -n "$_QUALIFIER" ]
-then
-    _QUALIFIER=".$_QUALIFIER"
-fi
-
-CSEARCHINDEX=_APPLICATION_DATA_PATH_/$_PROJECT/${_BRANCH}${_QUALIFIER}
+CSEARCHINDEX=_APPLICATION_DATA_PATH_/${_PROJECT_RELATIVE_PATH}.project/$_BRANCH/$_QUALIFIER
 mkdir -p $(dirname $CSEARCHINDEX)
 
 export CSEARCHINDEX
 
 CSEARCHINDEX="$CSEARCHINDEX" $_FUNCTION 2>/dev/null
+unset _QUALIFIER

@@ -7,6 +7,8 @@
 . _LIBRARY_PATH_/_APPLICATION_NAME_/search.log.sh
 
 _do_search() {
+    . _LIBRARY_PATH_/git/project.directory.sh
+    
     if [ -z "$_SEARCH_FILENAMES_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
     then
         _search_contents
@@ -24,26 +26,26 @@ _do_search() {
 }
 
 _search() {
-    cd $_PROJECT_BASE_PATH/$_PROJECT_PATH
-
-    _ORIGINAL_BRANCH=$(gcb)
     gco $_BRANCH
-
     _do_search
-
-    gco "$_ORIGINAL_BRANCH"
 }
 
 _FUNCTION="csearch $_SEARCH_ARGS"
 
 if [ -n "$_ALL" ]
 then
-    for _PROJECT in $(ls ~/.csearch)
+    for _PROJECT in $(find _APPLICATION_DATA_PATH_ -type d | grep \\.project$)
     do
-        for _BRANCH in $(ls ~/.csearch/$_PROJECT | grep -v \\.files$)
+        cd $(cat $_PROJECT/.config)
+
+        _ORIGINAL_BRANCH=$(gcb)
+        for _BRANCH_PATH in $(find $_PROJECT -type d -maxdepth 1 | grep -v \\.project$)
         do
+            _BRANCH=$(basename $_BRANCH_PATH)
             _search
         done
+
+        gco "$_ORIGINAL_BRANCH"
     done
 else
     _do_search

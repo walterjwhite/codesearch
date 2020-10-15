@@ -1,11 +1,20 @@
 #!/bin/sh
 
+. _LIBRARY_PATH_/git/project.directory.sh
+
 _FUNCTION="cindex ."
 
-. _LIBRARY_PATH_/_APPLICATION_NAME_/include.sh
+_CONFIG_PATH=_APPLICATION_DATA_PATH_/${_PROJECT_RELATIVE_PATH}.project/.config
 
-_PROJECT_PATH=$(pwd)
-_PROJECT=$(basename $_PROJECT_PATH)
+if [ ! -e $_CONFIG_PATH ]
+then
+    mkdir -p $(dirname $_CONFIG_PATH)
+
+    echo "$(pwd)" > $_CONFIG_PATH
+fi
+
+_QUALIFIER=content
+. _LIBRARY_PATH_/_APPLICATION_NAME_/include.sh
 
 . _LIBRARY_PATH_/_APPLICATION_NAME_/index.files.sh
 . _LIBRARY_PATH_/_APPLICATION_NAME_/index.log.sh
