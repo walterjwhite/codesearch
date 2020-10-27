@@ -20,20 +20,20 @@ do
             shift
             ;;
         # search contents only
-        -c)
+        -C)
             echo "Search contents only"
             _SEARCH_CONTENTS_ONLY=1
             ;;
-        -f)
+        -F)
             echo "Search filenames only"
             _SEARCH_FILENAMES_ONLY=1
             ;;
-        -g)
+        -L)
             echo "Search logs only"
             _SEARCH_LOG_ONLY=1
             ;;
         *)
-            _SEARCH_ARGS="$_ARG"
+            _SEARCH_ARGS="$_SEARCH_ARGS $_ARG"
             ;;
     esac
 done

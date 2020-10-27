@@ -7,14 +7,18 @@ cd $_PROJECT_BASE_PATH
 
 for _PROJECT in $(find . -type d | grep \\.git$ | sed -e "s/\/\.git$//")
 do
+    doLog "indexing $(basename $_PROJECT)"
+
     cd $_PROJECT
 
     # TODO: support all branches too
     _ORIGINAL_BRANCH=$(gcb)
     for _BRANCH in $(gb)
     do
+        doLog "indexing branch: $_BRANCH"
+
         # ensure we have no changes before checking out another branch
-        gco $_BRANCH
+        gco $_BRANCH > /dev/null 2>&1
 
         if [ "$?" -gt "0" ]
         then
@@ -25,7 +29,7 @@ do
     done
 
     # switch back to original branch
-    gco $_ORIGINAL_BRANCH
+    gco $_ORIGINAL_BRANCH > /dev/null 2>&1
 
-    cd ..
+    cd $_PROJECT_BASE_PATH
 done

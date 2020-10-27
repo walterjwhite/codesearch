@@ -1,0 +1,14 @@
+search
+    -a search all projects AND branches
+    -b search the specified branch
+
+    -p search the specified project
+    -l list matched files
+
+    -C search project contents only (no filenames or logs)
+    -F search project filenames only (no logs or contents)
+    -L search project logs only (no filenames or contents)
+
+
+    csearch args:
+        -i case insensitive

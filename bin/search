@@ -2,9 +2,9 @@
 
 . _LIBRARY_PATH_/git/include.sh
 . _LIBRARY_PATH_/_APPLICATION_NAME_/search.cli.sh
-. _LIBRARY_PATH_/_APPLICATION_NAME_/search.contents.sh
-. _LIBRARY_PATH_/_APPLICATION_NAME_/search.files.sh
-. _LIBRARY_PATH_/_APPLICATION_NAME_/search.log.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search/contents.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search/files.sh
+. _LIBRARY_PATH_/_APPLICATION_NAME_/search/log.sh
 
 _do_search() {
     . _LIBRARY_PATH_/git/project.directory.sh
@@ -29,8 +29,6 @@ _search() {
     gco $_BRANCH
     _do_search
 }
-
-_FUNCTION="csearch $_SEARCH_ARGS"
 
 if [ -n "$_ALL" ]
 then
