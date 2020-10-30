@@ -1,7 +1,5 @@
 #!/bin/sh
 
-. _LIBRARY_PATH_/install/logging.sh
-
 if [ -z "$_BRANCH" ]
 then
     _BRANCH=$(gcb)
