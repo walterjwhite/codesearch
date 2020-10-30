@@ -8,7 +8,7 @@ if [ ! -e $_CONFIG_PATH ]
 then
     mkdir -p $(dirname $_CONFIG_PATH)
 
-    echo "$(pwd)" > $_CONFIG_PATH
+    echo "$PWD" > $_CONFIG_PATH
 fi
 
 . _LIBRARY_PATH_/_APPLICATION_NAME_/index/content.sh
