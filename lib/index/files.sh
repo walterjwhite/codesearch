@@ -3,7 +3,7 @@
 _prepareData() {
     _INDEX_ARGS=${CSEARCHINDEX}.data
 
-    find . -type f -or -type l\
+    find $PWD -type f -or -type l\
     | grep -v \\.git\
     | sort -u\
     > $_INDEX_ARGS

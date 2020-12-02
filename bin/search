@@ -2,26 +2,26 @@
 
 . _LIBRARY_PATH_/git/include.sh
 . _LIBRARY_PATH_/_APPLICATION_NAME_/search.cli.sh
-. _LIBRARY_PATH_/_APPLICATION_NAME_/search/contents.sh
-. _LIBRARY_PATH_/_APPLICATION_NAME_/search/files.sh
-. _LIBRARY_PATH_/_APPLICATION_NAME_/search/log.sh
+
+_ORIGINAL_PWD=$PWD
+PWD_SED_SAFE=$(echo $_ORIGINAL_PWD | sed -e "s/\//\\\\\//g")
 
 _do_search() {
     . _LIBRARY_PATH_/git/project.directory.sh
     
     if [ -z "$_SEARCH_FILENAMES_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
     then
-        _search_contents
+        . _LIBRARY_PATH_/_APPLICATION_NAME_/search/contents.sh
     fi
 
     if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
     then
-        _search_filename
+        . _LIBRARY_PATH_/_APPLICATION_NAME_/search/files.sh
     fi
 
     if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_FILENAMES_ONLY" ]
     then
-        _search_log
+        . _LIBRARY_PATH_/_APPLICATION_NAME_/search/log.sh
     fi
 }
 
