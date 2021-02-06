@@ -4,11 +4,10 @@
 
 _CONFIG_PATH=_APPLICATION_DATA_PATH_/${_PROJECT_RELATIVE_PATH}.project/.config
 
-if [ ! -e $_CONFIG_PATH ]
-then
-    mkdir -p $(dirname $_CONFIG_PATH)
+if [ ! -e $_CONFIG_PATH ]; then
+	mkdir -p $(dirname $_CONFIG_PATH)
 
-    echo "$PWD" > $_CONFIG_PATH
+	echo "$PWD" >$_CONFIG_PATH
 fi
 
 . _LIBRARY_PATH_/_APPLICATION_NAME_/index/content.sh

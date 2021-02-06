@@ -1,8 +1,7 @@
 #!/bin/sh
 
-if [ -z "$_BRANCH" ]
-then
-    _BRANCH=$(gcb)
+if [ -z "$_BRANCH" ]; then
+	_BRANCH=$(gcb)
 fi
 
 CSEARCHINDEX=_APPLICATION_DATA_PATH_/${_PROJECT_RELATIVE_PATH}.project/$_BRANCH/$_QUALIFIER

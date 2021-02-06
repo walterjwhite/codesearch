@@ -7,44 +7,38 @@ _ORIGINAL_PWD=$PWD
 PWD_SED_SAFE=$(echo $_ORIGINAL_PWD | sed -e "s/\//\\\\\//g")
 
 _do_search() {
-    . _LIBRARY_PATH_/git/project.directory.sh
-    
-    if [ -z "$_SEARCH_FILENAMES_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
-    then
-        . _LIBRARY_PATH_/_APPLICATION_NAME_/search/contents.sh
-    fi
+	. _LIBRARY_PATH_/git/project.directory.sh
 
-    if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]
-    then
-        . _LIBRARY_PATH_/_APPLICATION_NAME_/search/files.sh
-    fi
+	if [ -z "$_SEARCH_FILENAMES_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]; then
+		. _LIBRARY_PATH_/_APPLICATION_NAME_/search/contents.sh
+	fi
 
-    if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_FILENAMES_ONLY" ]
-    then
-        . _LIBRARY_PATH_/_APPLICATION_NAME_/search/log.sh
-    fi
+	if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_LOG_ONLY" ]; then
+		. _LIBRARY_PATH_/_APPLICATION_NAME_/search/files.sh
+	fi
+
+	if [ -z "$_SEARCH_CONTENTS_ONLY" ] && [ -z "$_SEARCH_FILENAMES_ONLY" ]; then
+		. _LIBRARY_PATH_/_APPLICATION_NAME_/search/log.sh
+	fi
 }
 
 _search() {
-    gco $_BRANCH
-    _do_search
+	gco $_BRANCH
+	_do_search
 }
 
-if [ -n "$_ALL" ]
-then
-    for _PROJECT in $(find _APPLICATION_DATA_PATH_ -type d | grep \\.project$)
-    do
-        cd $(cat $_PROJECT/.config)
+if [ -n "$_ALL" ]; then
+	for _PROJECT in $(find _APPLICATION_DATA_PATH_ -type d | grep \\.project$); do
+		cd $(cat $_PROJECT/.config)
 
-        _ORIGINAL_BRANCH=$(gcb)
-        for _BRANCH_PATH in $(find $_PROJECT -type d -maxdepth 1 | grep -v \\.project$)
-        do
-            _BRANCH=$(basename $_BRANCH_PATH)
-            _search
-        done
+		_ORIGINAL_BRANCH=$(gcb)
+		for _BRANCH_PATH in $(find $_PROJECT -type d -maxdepth 1 | grep -v \\.project$); do
+			_BRANCH=$(basename $_BRANCH_PATH)
+			_search
+		done
 
-        gco "$_ORIGINAL_BRANCH"
-    done
+		gco "$_ORIGINAL_BRANCH"
+	done
 else
-    _do_search
+	_do_search
 fi

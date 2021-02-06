@@ -1,7 +1,7 @@
 #!/bin/sh
 
 _prepareData() {
-    return
+	return
 }
 
 _INDEX_ARGS=.
