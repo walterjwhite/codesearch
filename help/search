@@ -12,3 +12,6 @@ search
 
     csearch args:
         -i case insensitive
+        -c count matches
+        -n print line number
+        -f=* only search files matching REGEX

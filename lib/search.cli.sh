@@ -33,6 +33,29 @@ for _ARG in $@; do
 		info "Search logs only"
 		_SEARCH_LOG_ONLY=1
 		;;
+
+		### codesearch arguments
+	-i)
+		info "case-insensitive search"
+		_CODESEARCH_ARGS="$_CODESEARCH_ARGS $_ARG"
+		;;
+	-c)
+		info "count matches"
+		_CODESEARCH_ARGS="$_CODESEARCH_ARGS $_ARG"
+		;;
+	-n)
+		info "print line number"
+		_CODESEARCH_ARGS="$_CODESEARCH_ARGS $_ARG"
+		;;
+	-f=*)
+		info "only search files matching regex"
+		_FILENAME_REGEX="${_ARG#*=}"
+		_CODESEARCH_ARGS="$_CODESEARCH_ARGS -f $_FILENAME_REGEX"
+		;;
+	# -h)
+	# 	info "suppress filename in output"
+	# 	_CODESEARCH_ARGS="$_CODESEARCH_ARGS $_ARG"
+	# 	;;
 	*)
 		if [ -n "$_SEARCH_ARGS" ]; then
 			_SEARCH_ARGS="$_SEARCH_ARGS $_ARG"

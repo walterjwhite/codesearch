@@ -5,5 +5,5 @@
 info "### searching $_QUALIFIER"
 
 # TODO: handle more than 1 arg
-CSEARCHINDEX="$CSEARCHINDEX" csearch "$_SEARCH_ARGS"
+CSEARCHINDEX="$CSEARCHINDEX" csearch $_CODESEARCH_ARGS "$_SEARCH_ARGS"
 unset _QUALIFIER
