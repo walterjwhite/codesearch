@@ -38,6 +38,7 @@ for _ARG in $@; do
 	-i)
 		info "case-insensitive search"
 		_CODESEARCH_ARGS="$_CODESEARCH_ARGS $_ARG"
+		_FILTER_ARGS="$_FILTER_ARGS $_ARG"
 		;;
 	-c)
 		info "count matches"
