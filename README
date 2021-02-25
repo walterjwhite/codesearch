@@ -1,3 +1,4 @@
 TODO:
 1. colorize each column of data to make it easier to read
     echo one,two,three | awk -F',' '{ print "\033[34m"$1"\033[0m \033[35m"$2"\033[0m \033[36m"$3"\033[0m";}'
+
