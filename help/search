@@ -5,6 +5,8 @@ search
     -p search the specified project
     -l list matched files
 
+    -x=CMD execute CMD for each found file
+
     -C search project contents only (no filenames or logs)
     -F search project filenames only (no logs or contents)
     -L search project logs only (no filenames or contents)

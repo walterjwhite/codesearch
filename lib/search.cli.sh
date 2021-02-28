@@ -20,6 +20,10 @@ for _ARG in $@; do
 		_LIST_FILES=1
 		shift
 		;;
+	-x=*)
+		_EXEC="${_ARG#*=}"
+		shift
+		;;
 	# search contents only
 	-C)
 		info "Search contents only"
