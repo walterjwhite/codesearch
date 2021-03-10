@@ -4,7 +4,7 @@
 
 cd $_PROJECT_BASE_PATH
 
-for _PROJECT in $(find . -type d | grep \\.git$ | sed -e "s/\/\.git$//"); do
+for _PROJECT in $(find . | grep \\.git$ | sed -e "s/\/\.git$//"); do
 	doLog "indexing $(basename $_PROJECT)"
 
 	cd $_PROJECT
